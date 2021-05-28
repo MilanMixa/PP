@@ -1,3 +1,25 @@
+// 1. Write a JavaScript function that reverses a number. typeof result of the function should be “number”.
+// 	12345 -> 54321
+
+function reverse(number){
+    return number.toString().split("").reverse().join('');
+};
+var num = 12345;
+console.log(reverse(num));
+
+
+// 2. Write a JavaScript function that returns a passed string with letters in alphabetical order. 
+// Note: Assume punctuation, numbers and symbols are not included in the passed string.
+// “Webmaster” -> “abeemrstw”
+
+function alphabetical(string){
+    var newString = string.toLowerCase();
+    return newString.split("").sort().join('');
+};
+var str = "Webmaster";
+console.log(alphabetical(str));
+
+
 // 3. Write a function to alphabetize words of a given string. Alphabetizing a string means
 // rearranging the letters so they are sorted from A to Z.
 // "Republic Of Serbia" -> "Rbceilpu Of Sabeir"
@@ -11,7 +33,7 @@ function alphabetizingString (string) {
         newArr.push(sortEl);
     }) 
     return newArr.join(" ");
-}
+};
 var result2= alphabetizingString (a);
 console.log(result2);
 

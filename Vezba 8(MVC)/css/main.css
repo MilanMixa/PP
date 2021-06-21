@@ -31,13 +31,13 @@ input, select {
     margin: 10px 0px;
 }
 
-#button{
+.button{
     border: none;
     background-color: rgb(76,175,79);
     color: white;
 }
 
-#button:hover {
+.button:hover {
     background-color: rgb(103, 201, 106);
     cursor: pointer;
 }

@@ -24,6 +24,19 @@ h1{
     padding: 10px;
 }
 
+.create-movie{
+    list-style: none;
+}
+
+ul li:nth-child(even){
+    background-color: rgb(240,240,240);
+}
+
+#create-program{
+    list-style: none;
+    margin-bottom: 10px;
+}
+
 input, select {
     width: 100%;
     display: block;
@@ -55,4 +68,8 @@ select:focus{
 
 p{
     margin: 10px 0px;
+}
+
+#error-text, #error-date{
+    color: red;
 }

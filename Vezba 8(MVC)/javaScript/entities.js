@@ -1,3 +1,16 @@
+function MovieFestival(){
+    this.listOfAllMovies = [];
+    this.listOfAllPrograms = [];
+}
+
+MovieFestival.prototype.addMovies = function(movie){
+    this.listOfAllMovies.push(movie);
+}
+
+MovieFestival.prototype.addProgram = function(program){
+    this.listOfAllPrograms.push(program);
+}
+
 function Movie(name, length, genre){
     this.name = name;
     this.length = length;
@@ -15,6 +28,18 @@ console.log(movie.getData())
 
 function Program(date){
     this.date = new Date(date);
+    this.listOfMovies = [];
+}
+
+Program.prototype.addMovie = function (movie) {
+    if (!movie || !(movie instanceof Movie)){
+        console.log("invalid movie input");
+    }
+    this.listOfMovies.push(movie);
+}
+
+Program.prototype.duration = function() {
+    return this.listOfMovies.length;
 }
 
 Program.prototype.getData = function() {

@@ -34,8 +34,8 @@
                     </select>
                     <input type="button" class="button" value="Create Movie">
             
-                    <p class="error-text"></p>
-                    <p class="create-movie"></p>
+                    <p id="error-text"></p>
+                    <ul class="create-movie"></ul>
                 </form>
             </div>
             <p>Program</p>
@@ -44,10 +44,10 @@
                     <label for="program-date">Date</label>
                     <input type="date" name="" id="program-date" required>
 
-                    <input type="button" class="button" value="Create program">
+                    <input type="button" class="button" id="program-button" value="Create program">
         
-                    <p class="error-date"></p>
-                    <p class="create-program"></p>
+                    <p id="error-date"></p>
+                    <ul id="create-program"></ul>
                 </form>
 
                 <form action="">
@@ -61,7 +61,7 @@
                         <option hidden disabled selected value> - </option>
                     </select>
 
-                    <input type="button" class="button" value="Add movie to program">
+                    <input type="button" class="button" id="movie-program" value="Add movie to program">
                 </form>
             </div>
         </div>

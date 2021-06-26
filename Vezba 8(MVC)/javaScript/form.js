@@ -13,7 +13,6 @@ var movieList = document.getElementById("movie-select");
 var programList = document.getElementById("program-select");
 var programCreate = document.getElementById("create-program");
 var movieProgram = document.getElementById("movie-program");
-console.log(movieButton)
 
 
 function createMovie (){
@@ -25,42 +24,73 @@ function createMovie (){
     var movieValue = title.value;
     var lengthValue = length.value;
     var genreValue = genre.value;
-    genreValue = (genreValue[0] + genreValue[genreValue.length-1]).toUpperCase();
 
     var movie = new Movie(movieValue, lengthValue, genreValue);
 
+    festival.addMovies(movie);
+    var index = festival.listOfAllMovies.length - 1;
+
     var li = document.createElement("li");
-    li.innerHTML = title.value +", " + length.value + "min, " + genreValue;
+    li.innerText = movie.getData();
     movieParagraph.appendChild(li);
 
     var option = document.createElement("option");
-    option.innerHTML = title.value +", " + length.value + "min, " + genreValue;
-    option.value = title.value +", " + length.value + "min, " + genreValue;
+    option.innerText = movie.getData();
+    option.setAttribute("value", index);
     movieList.appendChild(option);
 
-    festival.addMovies(movie);
 }
 
 function createProgram(){
-    var program = new Program(inputDate.value)
+    var input = new Date(inputDate.value);
+    var program = new Program(input);
     
-    if(!inputDate.value){
+    if(!input){
         errorProgram.innerHTML = "Please fili out the date field";
         return -1;
     }
+
+    var hasProgramWithSameDate = festival.listOfAllPrograms.some(function(program){
+        return input.getTime() === program.date.getTime();
+    }) 
+
+    if(hasProgramWithSameDate){
+        errorProgram.innerText = "Program with same date already exists";
+        return -1;
+     }
+    
+    festival.addProgram(program);
+    var index = festival.listOfAllPrograms.length - 1;
+
     var li = document.createElement("li");
-    li.innerHTML = program;
+    li.innerHTML = program.getData();
+    li.setAttribute("id", "item-" + index)
     programCreate.appendChild(li);
     
     var option = document.createElement("option");
-    option.innerHTML = program;
+    option.innerHTML = program.getData();
+    option.setAttribute("value", index);
     programList.appendChild(option);
+
+    
+    inputDate.value = "";
 }
 
 function addMovieToProgram(){
-    var movieInput = movieList.options[movieList.selecetedIndex].text;
-    var programInput = programList.options[programList.selecetedIndex].text;
+    var movieInput = movieList.value;
+    var programInput = programList.value;
+  
+    var program = festival.listOfAllPrograms[programInput];
+    var movie = festival.listOfAllMovies[movieInput];
+    
+    var li = document.querySelector("#item-" + programInput);
+    li.innerText = program.getData();
+    
 
+    program.addMovie(movie);
+    
+
+    //var program = festival.listOfAllPrograms[festival.getProgramByDate(programList.value)];
 }
 
 movieButton.addEventListener("click", createMovie);

@@ -11,9 +11,21 @@ MovieFestival.prototype.addProgram = function(program){
     this.listOfAllPrograms.push(program);
 }
 
+// MovieFestival.prototype.getProgramByDate = function(date){
+//     var i = 0;
+//     this.listOfAllPrograms.forEach(function(el, k){
+//         console.log(el.getData() === date)
+//         if(el.getData() === date){
+//             i = k;
+//         }
+//     })
+//     return i;
+// }
+
+
 function Movie(name, length, genre){
     this.name = name;
-    this.length = length;
+    this.length = parseInt(length);
     this.genre = genre;
 };
 
@@ -46,8 +58,17 @@ Program.prototype.getData = function() {
     var day = this.date.getDate();
     var month = this.date.getMonth() + 1;
     var year = this.date.getFullYear();
-    return day + "." + month + "." + year;
+    var sandra = day + "." + month + "." + year;
+    if(this.duration() === 0){
+        return sandra + " Program to be announced";
+    }
+        return sandra + ", " + this.duration() + " movies, " + "duration: " + this.getProgramLength() + "min";
 }
 
-var program = new Program("Oct 23 1990");
-console.log(program.getData());
+Program.prototype.getProgramLength = function(){
+    var length = 0;
+    this.listOfMovies.forEach(function(el){
+        length += el.length;
+    })
+    return length;
+}

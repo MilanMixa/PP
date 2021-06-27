@@ -78,7 +78,6 @@ function createProgram(){
     option.setAttribute("value", index);
     programList.appendChild(option);
 
-    
     inputDate.value = "";
 }
 

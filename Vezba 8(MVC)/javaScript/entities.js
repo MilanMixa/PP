@@ -34,19 +34,12 @@ Movie.prototype.getData = function (){
     return this.name + ", " + this.length + "min, " + abbrevation;
 }
 
-
-var movie = new Movie("Titanic", 123, "Drama");
-console.log(movie.getData())
-
 function Program(date){
     this.date = new Date(date);
     this.listOfMovies = [];
 }
 
 Program.prototype.addMovie = function (movie) {
-    if (!movie || !(movie instanceof Movie)){
-        console.log("invalid movie input");
-    }
     this.listOfMovies.push(movie);
 }
 
@@ -54,11 +47,15 @@ Program.prototype.duration = function() {
     return this.listOfMovies.length;
 }
 
-Program.prototype.getData = function() {
+Program.prototype.formatDate = function(){
     var day = this.date.getDate();
     var month = this.date.getMonth() + 1;
     var year = this.date.getFullYear();
-    var sandra = day + "." + month + "." + year;
+    return day + "." + month + "." + year;
+}
+
+Program.prototype.getData = function() {
+    var sandra = this.formatDate();
     if(this.duration() === 0){
         return sandra + " Program to be announced";
     }

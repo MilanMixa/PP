@@ -44,9 +44,15 @@ function createMovie (){
 function createProgram(){
     var input = new Date(inputDate.value);
     var program = new Program(input);
+    errorProgram.innerHTML = "";
     
-    if(!input){
+    if(isNaN(input.getTime())){
         errorProgram.innerHTML = "Please fili out the date field";
+        return -1;
+    }
+
+    if(new Date - input > 0){
+        errorProgram.innerHTML = "Invalid date";
         return -1;
     }
 
@@ -68,7 +74,7 @@ function createProgram(){
     programCreate.appendChild(li);
     
     var option = document.createElement("option");
-    option.innerHTML = program.getData();
+    option.innerHTML = program.formatDate();
     option.setAttribute("value", index);
     programList.appendChild(option);
 

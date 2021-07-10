@@ -62,13 +62,16 @@ getEvenNumbers();
 // 	Input: ['compiler', 'transpiler', 'babel.js', 'JS standard', 'linter']
 // 	Output: ['babel.js, 'JS standard']
 
-
+const items = ['compiler', 'transpiler', 'babel.js', 'JS standard', 'linter'];
+const output = items.filter(element => element.includes('JS') || element.includes("js"));
+console.log(output);
 
 
 
 // 6.	Write a function that filters all integer numbers from the given array. 
-// Input: 
+// Input:  [1.6, 11.34, 9.23, 7, 3.11, 8]
 // 	Output: [7, 8]
+
 
 
 

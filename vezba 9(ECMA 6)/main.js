@@ -15,8 +15,6 @@ const capitalize = (array) => {
   console.log(result);
 
 
-
-
 // 2.	Write a function that calculates sale tax that should be paid for the product of the given price. Use a constant to set a fixed value of the tax rate (i.e. 20% in Serbia). 
 // 	Input: [{ name: "Banana", price: 120 }, {name: "Orange",  price: 100}]
 // 	Output: [{ name: "Banana", price: 144 }, { name: "Orange",  price: 120 }] // product full price
@@ -47,14 +45,12 @@ console.log(increaseEachElement(c,d))
 // 	Input: [6, 11, 9, 0, 3]
 // 	Output: [6, 0]
 
-let getEvenNumbers = () => {
-    let arr = [6, 11, 9, 0, 3];
-    	
-    let evenNumbers = arr.filter(number => number % 2 == 0);
-    console.log(evenNumbers)
-}
-    
-getEvenNumbers();
+
+let input = [6, 11, 9, 0, 3];
+
+let getEvenNumbers = arr => arr.filter(number => number % 2 == 0);
+
+console.log(getEvenNumbers(input))
 
 
 
@@ -63,16 +59,17 @@ getEvenNumbers();
 // 	Output: ['babel.js, 'JS standard']
 
 const items = ['compiler', 'transpiler', 'babel.js', 'JS standard', 'linter'];
-const output = items.filter(element => element.includes('JS') || element.includes("js"));
-console.log(output);
-
+const output = array => array.filter(element => element.includes('JS') || element.includes("js"));
+console.log(output(items));
 
 
 // 6.	Write a function that filters all integer numbers from the given array. 
 // Input:  [1.6, 11.34, 9.23, 7, 3.11, 8]
 // 	Output: [7, 8]
 
-
+const str = [1.6, 11.34, 9.23, 7, 3.11, 8];
+const filteredNumbers = num => num.filter(item=> parseInt(item) == item).map(item=>parseInt(item));
+console.log(filteredNumbers(str));
 
 
 // 7.	Write a function that filters all integer arguments that contain digit 5.
